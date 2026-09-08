@@ -6,11 +6,12 @@ public:
         for(int i=0;i<s.size();i++){
             if(s[i]=='('){
                 level++;
-                depth=max(depth,level);
+                
             }
             else if(s[i]==')'){
                 level--;
             }
+            depth=max(depth,level);
         }
         return depth;
     }
