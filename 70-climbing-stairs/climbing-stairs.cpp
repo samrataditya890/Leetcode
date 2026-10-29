@@ -3,9 +3,7 @@ public:
     int climbStairs(int n) {
         //Bottom up approach
         vector<int> dp(n+1);
-        if(n==0) return 0;
-        if(n==1) return 1;
-        dp[0]=0;
+        if(n==0 || n==1) return 1;
         dp[1]=1;
         dp[2]=2;
         for(int i=3;i<=n;i++){
