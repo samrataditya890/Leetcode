@@ -1,14 +1,17 @@
 class Solution {
 public:
-    int climbStairs(int n) {
-        //Bottom up approach
-        vector<int> dp(n+1);
-        if(n==0 || n==1) return 1;
-        dp[1]=1;
-        dp[2]=2;
-        for(int i=3;i<=n;i++){
-            dp[i]=dp[i-1]+dp[i-2];
+    int ans(int n,vector<int>& dp){
+        if(n==1) return 1;
+        if(n==2) return 2;
+        if(dp[n]!=-1){
+            return dp[n];
         }
+        dp[n]=ans(n-1,dp)+ans(n-2,dp);
         return dp[n];
+    }
+    int climbStairs(int n) {
+        
+        vector<int> dp(n+1,-1);
+        return ans(n,dp);
     }
 };
