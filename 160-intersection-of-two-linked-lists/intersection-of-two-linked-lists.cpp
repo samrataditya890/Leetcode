@@ -9,12 +9,20 @@
 class Solution {
 public:
     ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        //better approch
+        unordered_set<ListNode*> seen;
         ListNode* first=headA;
-        ListNode* second=headB;
-        while(first!=second){
-            first=(first==NULL)?headB:first->next;
-            second=(second==NULL)?headA:second->next;
+        while(first!=NULL){
+            seen.insert(first);
+            first=first->next;
         }
-        return first;
+        ListNode* second=headB;
+        while(second!=NULL){
+            if(seen.find(second)!=seen.end()){
+                return second;
+            }
+            second=second->next;
+        }
+        return NULL;
     }
 };
